@@ -38,7 +38,7 @@ def extract_nonbonded_force(system):
     raise ValueError("NonbondedForce not found in the system.")
 
 
-def calculate_atom_interaction(index1, index2, positions, nonbonded_force, cutoff=0.6):
+def calculate_atom_interaction(index1, index2, positions, nonbonded_force, cutoff=0.1):
     q1, sigma1, eps1 = [x.value_in_unit(y) for x, y in zip(nonbonded_force.getParticleParameters(index1), 
                                                             [unit.elementary_charge, unit.nanometer, unit.kilojoule_per_mole])]
     q2, sigma2, eps2 = [x.value_in_unit(y) for x, y in zip(nonbonded_force.getParticleParameters(index2), 
